@@ -1,44 +1,32 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    int t; 
-    cin >> t;
 
-    while (t--)
-    {
-        string s;
-        cin >> s; 
-        vector<int> lasts, lastu;
+    int t; cin>>t;
 
-        for (int i = 0; i < s.size(); ++i) {
-            if (s[i] == 'b' && !lasts.empty()) {
-                s[lasts[lasts.size() - 1]] = '0';
-                lasts.pop_back();
-                s[i] = '0';
-            } else if (s[i] == 'B' && !lastu.empty()) {
-                s[lastu[lastu.size() - 1]] = '0';
-                lastu.pop_back();
-                s[i] = '0';
-            } else if (s[i] >= 97 && s[i] != 'b') {
-                lasts.push_back(i);
-            } else if (s[i] != 'B' && s[i] <= 90) {
-                lastu.push_back(i);
-            } else {
-                s[i] = '0';
+    while (t--) {
+        string s,ans; cin>>s;
+
+        int lower=0,upper=0;
+
+        for (int i=s.size()-1;i>=0;i--) {
+            char c=s[i];
+            if (c=='b') lower++;
+            else if (c=='B') upper++;
+            else if (islower(c)) {
+                if (lower>0) lower--;
+                else ans.push_back(c);
+            }
+            else if (isupper(c)) {
+                if (upper>0) upper--;
+                else ans.push_back(c);
             }
         }
-
-        for (int i = 0; i < s.size(); ++i) {
-            if (s[i] != '0') {
-                cout << s[i];
-            }
-        }
-        cout << '\n';
+        reverse(ans.begin(), ans.end());
+        cout<<ans<<'\n';
     }
-    
     return 0;
 }
