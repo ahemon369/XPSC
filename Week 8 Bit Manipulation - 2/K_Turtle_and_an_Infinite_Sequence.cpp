@@ -1,32 +1,17 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
-
+#define ll long long
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    int t;
-    cin >> t;
+    int t; cin>>t;
     while (t--) {
-        long long n, m;
-        cin >> n >> m;
-        if (m == 0) {
-            cout << n << '\n';
-            continue;
+        ll n,m,ans=0; cin>>n>>m; 
+		ll l=max(0ll,n-m), r=n+m; 
+        for (ll i=0;i<32;i++) {
+            if ((l>>i)!=(r>>i)||(l>>i)&1) ans|=(1LL<<i);
         }
-        long long L = max(0LL, n - m);
-        long long R = n + m;
-        if (L == R) {
-            cout << L << '\n';
-            continue;
-        }
-        int shift = 0;
-        while (L != R) {
-            L >>= 1;
-            R >>= 1;
-            shift++;
-        }
-        long long result = (L << shift) | ((1LL << shift) - 1);
-        cout << result << '\n';
+		cout<<ans<<'\n';
     }
     return 0;
 }
