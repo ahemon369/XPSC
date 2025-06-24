@@ -10,7 +10,7 @@ int main()
         long long n,sum=0; cin>>n;
         vector<int> a(n);
         for(auto &x : a) {cin>>x; sum+=abs(x);}
-        cout<<sum << '\n';
+        cout<<sum<<'\n';
     }
     return 0;
 }
