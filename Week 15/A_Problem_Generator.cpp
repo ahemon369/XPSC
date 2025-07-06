@@ -13,6 +13,6 @@ int main()
         for (char ch:s) freq[ch-'A']++;
         for (int i=0;i<7;i++) ans+=max(0,m-freq[i]);
         cout<<ans<<'\n';
-    }
+    } 
     return 0;
-}
+} 
