@@ -13,6 +13,6 @@ int main()
         x=max(x,0);
         ans+=(x+14)/15;
         cout<<ans<<'\n';
-    }
+    } 
     return 0;
 }
